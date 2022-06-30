@@ -470,7 +470,7 @@ $('section').each(function () {
         'prach': '3.505',
         'chleba': '3.515',
         'klenba': '3.522',
-        'stest': '3.532',
+        'stesk': '3.532',
         'klacek': '3.535',
         'plomba': '3.542',
         'strop': '3.545',
