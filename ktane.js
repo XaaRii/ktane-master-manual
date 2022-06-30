@@ -875,6 +875,9 @@ $('section').each(function () {
     });
 
     $('#knobInput').on('keyup', function () {
+        var value = this.value.replace(/[^xX ]+/g, '').toUpperCase();
+        this.value = value;
+
         var value = this.value.toUpperCase();
         this.value = value;
 
