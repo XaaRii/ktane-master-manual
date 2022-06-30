@@ -5,7 +5,7 @@ var ktane = ktane || {};
 
 $('h2').on('dblclick', function () {
     $(this).closest('section').toggleClass('collapsed');
-}).attr('title', 'Double-click to expand/collapse');
+}).attr('title', 'Dvojklik pro schování/objevení karty');
 
 /** Reset inputs */
 ktane.resetInputs = function ($container) {
@@ -56,7 +56,7 @@ $('section').each(function () {
         var colour = this.getAttribute('data-colour'),
             letter = this.getAttribute('data-letter'),
             $li = $('<li><button class="button ' + colour + '" data-colour="' + colour
-                    + '" data-letter="' + letter + '"></button></li>');
+                + '" data-letter="' + letter + '"></button></li>');
 
         $wireList.append($li);
         count[colour]++;
@@ -145,7 +145,7 @@ $('section').each(function () {
                 className = 'even';
             }
             $wireList.children(isNaN(child) ? ':last-child' : ':nth-child(' + child + ')')
-                    .addClass('wireToCut' + (className !== 'even' || oddPossible ? ' ' + className : ''));
+                .addClass('wireToCut' + (className !== 'even' || oddPossible ? ' ' + className : ''));
         }
     }
 })();
@@ -155,24 +155,24 @@ $('section').each(function () {
      * Button
      */
     var $section = $('#sectionButton'),
-            $instruction = $section.find('.instruction'),
-            instruction;
+        $instruction = $section.find('.instruction'),
+        instruction;
 
     $section.find('input').on('click', function () {
         var colour = $('input[name="buttonColour"]:checked').val(),
-                text = $('input[name="buttonText"]:checked').val();
+            text = $('input[name="buttonText"]:checked').val();
 
         if (text === 'Detonate') {
-            instruction = 'If 2+ \ud83d\udd0b, press and release.<br />Otherwise, hold button.'
+            instruction = 'Pokud 2 a více \ud83d\udd0b, hned pusť.<br />Jinak podrž tlačítko.'
         } else if (colour === 'white') {
-            instruction = 'If <span class="litIndicator" title="Lit indicator">CAR</span>, hold button.<br />Otherwise, if 3+ \ud83d\udd0b and <span class="litIndicator" title="Lit indicator">FRK</span>, press and release.<br />Otherwise, hold button.'
+            instruction = 'Pokud je rozsvícený indikátor <span class="litIndicator" title="Lit indicator">CAR</span>, podrž tlačítko.<br />Jinak, pokud 3 a více \ud83d\udd0b a rozsvícený indikátor <span class="litIndicator" title="Lit indicator">FRK</span>, hned pusť.<br />Jinak podrž tlačítko.'
         } else if (colour === 'blue' && text === 'Abort'
-                || colour === 'yellow') {
-            instruction = 'Hold button.';
+            || colour === 'yellow') {
+            instruction = 'Podrž tlačítko.';
         } else if (colour === 'red' && text === 'Hold') {
-            instruction = 'Press and release.';
+            instruction = 'Hned pusť.';
         } else {
-            instruction = 'If 3+ \ud83d\udd0b and <span class="litIndicator" title="Lit indicator">FRK</span>, press and release the button.<br />Otherwise, hold button.';
+            instruction = 'Pokud 3 a více \ud83d\udd0b a rozsvícený indikátor <span class="litIndicator" title="Lit indicator">FRK</span>, hned pusť tlačítko.<br />Jinak podrž tlačítko.';
         }
 
         $instruction.html(instruction);
@@ -271,72 +271,71 @@ $('section').each(function () {
     /**
      * Who's on First
      */
-    var TL = 'top-left',
-        TR = 'top-right',
-        ML = 'middle-left',
-        MR = 'middle-right',
-        BL = 'bottom-left',
-        BR = 'bottom-right',
+    var TL = 'levá horní',
+        TR = 'pravá horní',
+        ML = 'levá prostřední',
+        MR = 'pravá prostřední',
+        BL = 'levá spodní',
+        BR = 'pravá spodní',
         displays = {
-            '\u00a0': BL,
-            'BLANK': MR,
-            'C': TR,
-            'CEE': BR,
-            'DISPLAY': BR,
-            'FIRST': TR,
-            'HOLD ON': BR,
-            'LEAD': BR,
-            'LED': ML,
-            'LEED': BL,
-            'NO': BR,
-            'NOTHING': ML,
-            'OKAY': TR,
-            'READ': MR,
-            'RED': MR,
-            'REED': BL,
-            'SAYS': BR,
-            'SEE': BR,
-            'U': TL,
-            'UR': TL,
-            'THEIR': MR,
-            'THERE': BR,
-            'THEY ARE': ML,
-            'THEY\'RE': BL,
-            'YES': ML,
-            'YOU': MR,
-            'YOU ARE': BR,
-            'YOUR': MR,
-            'YOU\'RE': MR
+            '\u00a0': MR,
+            'ANO': ML,
+            'ÁŇO': ML,
+            'BILI': ML,
+            'BILY': BR,
+            'BÍLÍ': BR,
+            'BYLY': TR,
+            'C': MR,
+            'CÉ': BR,
+            'ČEKEJ': BR,
+            'DRŽ': BR,
+            'HOLD': ML,
+            'HOLT': BR,
+            'LED': BR,
+            'LET': MR,
+            'MĚ': BR,
+            'MNĚ': TR,
+            'MÍT': MR,
+            'MÝT': BL,
+            'NIC': BL,
+            'OK': MR,
+            'OKA': TL,
+            'POČKAT': MR,
+            'POČKEJ': BL,
+            'PRÁZDNO': BR,
+            'VYDRŽ': MR,
+            'VÝDRŽ': TR,
+            'VÝT': BL,
         },
         sequence = {
-            'BLANK': 'WAIT, RIGHT, OKAY, MIDDLE, BLANK',
-            'DONE': 'SURE, UH HUH, NEXT, WHAT?, YOUR, UR, YOU\'RE, HOLD, LIKE, YOU, U, YOU ARE, UH UH, DONE',
-            'FIRST': 'LEFT, OKAY, YES, MIDDLE, NO, RIGHT, NOTHING, UHHH, WAIT, READY, BLANK, WHAT, PRESS, FIRST',
-            'HOLD': 'YOU ARE, U, DONE, UH UH, YOU, UR, SURE, WHAT?, YOU\'RE, NEXT, HOLD',
-            'LEFT': 'RIGHT, LEFT',
-            'LIKE': 'YOU\'RE, NEXT, U, UR, HOLD, DONE, UH UH, WHAT?, UH HUH, YOU, LIKE',
-            'MIDDLE': 'BLANK, READY, OKAY, WHAT, NOTHING, PRESS, NO, WAIT, LEFT, MIDDLE',
-            'NEXT': 'WHAT?, UH HUH, UH UH, YOUR, HOLD, SURE, NEXT',
-            'NO': 'BLANK, UHHH, WAIT, FIRST, WHAT, READY, RIGHT, YES, NOTHING, LEFT, PRESS, OKAY, NO',
-            'NOTHING': 'UHHH, RIGHT, OKAY, MIDDLE, YES, BLANK, NO, PRESS, LEFT, WHAT, WAIT, FIRST, NOTHING',
-            'OKAY': 'MIDDLE, NO, FIRST, YES, UHHH, NOTHING, WAIT, OKAY',
-            'PRESS': 'RIGHT, MIDDLE, YES, READY, PRESS',
-            'READY': 'YES, OKAY, WHAT, MIDDLE, LEFT, PRESS, RIGHT, BLANK, READY',
-            'RIGHT': 'YES, NOTHING, READY, PRESS, NO, WAIT, WHAT, RIGHT',
-            'SURE': 'YOU ARE, DONE, LIKE, YOU\'RE, YOU, HOLD, UH HUH, UR, SURE',
-            'U': 'UH HUH, SURE, NEXT, WHAT?, YOU\'RE, UR, UH UH, DONE, U',
-            'UH HUH': 'UH HUH',
-            'UH UH': 'UR, U, YOU ARE, YOU\'RE, NEXT, UH UH',
-            'UHHH': 'READY, NOTHING, LEFT, WHAT, OKAY, YES, RIGHT, NO, PRESS, BLANK, UHHH',
-            'UR': 'DONE, U, UR',
-            'WAIT': 'UHHH, NO, BLANK, OKAY, YES, LEFT, FIRST, PRESS, WHAT, WAIT',
-            'WHAT': 'UHHH, WHAT',
-            'WHAT?': 'YOU, HOLD, YOU\'RE, YOUR, U, DONE, UH UH, LIKE, YOU ARE, UH HUH, UR, NEXT, WHAT?',
-            'YES': 'OKAY, RIGHT, UHHH, MIDDLE, FIRST, WHAT, PRESS, READY, NOTHING, YES',
-            'YOU ARE': 'YOUR, NEXT, LIKE, UH HUH, WHAT?, DONE, UH UH, HOLD, YOU, U, YOU\'RE, SURE, UR',
-            'YOU': 'SURE, YOU ARE, YOUR, YOU\'RE, NEXT, UH HUH, UR, HOLD, WHAT?, YOU',
-            'YOU\'RE': 'YOU, YOU\'RE',
-            'YOUR': 'UH UH, YOU ARE, UH HUH, YOUR'
+            'A': 'ÁŇO, POSLEDNÍ, NE, KDY JSI, NUŽ, TYS, A',
+            'AH': 'LEVÁ, AH',
+            'AHHH': 'PRAVÁ, AHHH',
+            'ANO': 'OKA, PRAVÁ, LEVÁ, NŮŽ, PRVNÍ, AH, OK, UŽ, CO, ANO',
+            'ÁŇO': 'DALŠÍ, NUŽ, HA HAH, KDY JSI, HA HA, JISTĚ, NE, TY JSI, KDYS, POSLEDNÍ, CO?, A, ÁŇO',
+            'ČEKEJ': 'LEVÁ, NIC, PRÁZDNO, OKA, ANO, AHHH, PRVNÍ, OK, AH, ČEKEJ',
+            'CO': 'LEVÁ, PRAVÁ, OKA, NŮŽ, ANO, PRÁZDNO, NIC, OK, AHHH, AH, ČEKEJ, PRVNÍ, CO',
+            'CO?': 'JISTĚ, HA HA, CO?',
+            'DALŠÍ': 'TYS, KDYS, KDY JSI, HA HAH, A, POSLEDNÍ, CO?, NUŽ, ÁŇO, DALŠÍ',
+            'HA HA': 'POSLEDNÍ, TYS, A, ÁŇO, HA HAH, CO?, NE, JISTĚ, HA HA',
+            'HA HAH': 'DALŠÍ, HA HAH',
+            'JISTĚ': 'TYS, POSLEDNÍ, A, ÁŇO, KDY JSI, CO?, HA HAH, NUŽ, TY JSI, DALŠÍ, HA HA, KDYS, NE, JISTĚ',
+            'KDYS': 'KDY JSI, A, TY JSI, POSLEDNÍ, ÁŇO, JISTĚ, NE, NUŽ, DALŠÍ, HA HA, HA HAH, TYS, CO?, KDYS',
+            'KDY JSI': 'NE, KDYS, POSLEDNÍ, KDY JSI',
+            'LEVÁ': 'UŽ, CO, AHHH, AH, OKA, ANO, PRAVÁ, NIC, OK, PRÁZDNO, LEVÁ',
+            'NE': 'CO?, HA HA, KDYS, HA HAH, A, NE',
+            'NIC': 'PRÁZDNO, LEVÁ, ČEKEJ, PRVNÍ, AH, UŽ, PRAVÁ, ANO, CO, AHHH, OK, OKA, NIC',
+            'NUŽ': 'KDYS, HA HA, JISTĚ, NE, DALŠÍ, CO?, TYS, ÁŇO, HA HAH, A, NUŽ',
+            'NŮŽ': 'PRÁZDNO, UŽ, OKA, AH, CO, OK, NIC, ČEKEJ, AHHH, NŮŽ',
+            'OK': 'PRAVÁ, NŮŽ, ANO, UŽ, OK',
+            'OKA': 'NŮŽ, NIC, PRVNÍ, ANO, LEVÁ, CO, ČEKEJ, OKA',
+            'POSLEDNÍ': 'POSLEDNÍ',
+            'PRAVÁ': 'ANO, CO, UŽ, OK, NIC, ČEKEJ, AH, PRAVÁ',
+            'PRÁZDNO': 'ČEKEJ, PRAVÁ, OKA, NŮŽ, PRÁZDNO',
+            'PRVNÍ': 'AHHH, OKA, ANO, NŮŽ, NIC, PRAVÁ, CO, LEVÁ, ČEKEJ, UŽ, PRÁZDNO, AH, OK, PRVNÍ',
+            'UŽ': 'ANO, OKA, AH, NŮŽ, AHHH, OK, PRAVÁ, PRÁZDNO, UŽ',
+            'TYS': 'KDYS, JISTĚ, TY JSI, HA HAH, DALŠÍ, NUŽ, POSLEDNÍ, CO?, TYS',
+            'TY JSI': 'HA HAH, A, HA HA, CO?, NUŽ, JISTĚ, NE, ÁŇO, POSLEDNÍ, DALŠÍ, TY JSI',
         },
         $list = $('#wofList'),
         $table = $('#wofTable'),
@@ -399,7 +398,7 @@ $('section').each(function () {
         };
 
         if (i < 5) {
-            $s[i].p.add($s[i].l).on('keyup', {j: i + 1}, function (e) {
+            $s[i].p.add($s[i].l).on('keyup', { j: i + 1 }, function (e) {
                 if (inputRegex.test(this.value)) {
                     $s[e.data.j].d.focus();
                 }
@@ -468,42 +467,43 @@ $('section').each(function () {
      * Morse
      */
     var freqs = {
-        shell: '3.505',
-        halls: '3.515',
-        slick: '3.522',
-        trick: '3.532',
-        boxes: '3.535',
-        leaks: '3.542',
-        strobe: '3.545',
-        bistro: '3.552',
-        flick: '3.555',
-        bombs: '3.565',
-        'break': '3.572',
-        brick: '3.575',
-        steak: '3.582',
-        sting: '3.592',
-        vector: '3.595',
-        beats: '3.600'
+        'prach': '3.505',
+        'chleba': '3.515',
+        'klenba': '3.522',
+        'stest': '3.532',
+        'klacek': '3.535',
+        'plomba': '3.542',
+        'strop': '3.545',
+        'shluk': '3.552',
+        'mozol': '3.555',
+        'mozek': '3.565',
+        'houby': '3.572',
+        'sklep': '3.575',
+        'strach': '3.582',
+        'bahno': '3.592',
+        'strup': '3.595',
+        'brach': '3.600'
     },
         codes = {
-            '.-':   'a',
+            '.-': 'a',
             '-...': 'b',
             '-.-.': 'c',
-            '.':    'e',
+            '.': 'e',
             '..-.': 'f',
-            '--.':  'g',
+            '--.': 'g',
             '....': 'h',
-            '..':   'i',
-            '-.-':  'k',
+            '..': 'i',
+            '-.-': 'k',
             '.-..': 'l',
-            '--':   'm',
-            '-.':   'n',
-            '---':  'o',
-            '.-.':  'r',
-            '...':  's',
-            '-':    't',
+            '--': 'm',
+            '-.': 'n',
+            '---': 'o',
+            '.-.': 'r',
+            '...': 's',
+            '-': 't',
             '...-': 'v',
-            '-..-': 'x'
+            '-..-': 'x',
+            '--..': 'z'
         },
         codeRegex = new RegExp(' *(' + Object.keys(codes).join('|').replace(/\./g, '\\.') + ')(?![\.-]) *', 'g'),
         $rows = {},
@@ -566,12 +566,12 @@ $('section').each(function () {
 
     $('#sequenceOptions button').on('click', function () {
         var colour = this.getAttribute('data-colour'),
-                letter = this.getAttribute('data-letter'),
-                $li = $('<li><button class="button ' + colour + '" data-colour="' + colour + '" data-letter="' + letter
-                        + '">' + letter + '</button></li>');
+            letter = this.getAttribute('data-letter'),
+            $li = $('<li><button class="button ' + colour + '" data-colour="' + colour + '" data-letter="' + letter
+                + '">' + letter + '</button></li>');
 
         if (typeof occurrences[colour][count[colour]] !== 'undefined') {
-            $li.append(occurrences[colour][count[colour]].indexOf(letter) === -1 ? 'Ignore' : 'Cut');
+            $li.append(occurrences[colour][count[colour]].indexOf(letter) === -1 ? 'Ignoruj' : 'Přestřihni');
             count[colour]++;
             $instructions.append($li);
         }
@@ -593,50 +593,50 @@ $('section').each(function () {
      * Venn diagram
      */
     var instructions = {
-                C: 'Cut',
-                D: '<strong>Do not</strong> cut',
-                S: 'If last digit of serial is even, cut',
-                P: 'If parallel port, cut',
-                B: 'If 2+ \ud83d\udd0b, cut'
-            },
-            conditions = { // Initialize
+        C: 'Přestřihni',
+        D: '<strong>NESTŘÍHEJ</strong>',
+        S: 'Pokud je seriové číslo sudé, přestřihni',
+        P: 'Pokud je na bombě paralelní port, přestřihni',
+        B: 'Pokud jsou 2 a více \ud83d\udd0b, přestřihni'
+    },
+        conditions = { // Initialize
+            false: {
                 false: {
-                    false: {
-                        false: {}, true: {}
-                    },
-                    true: {
-                        false: {}, true: {}
-                    }
+                    false: {}, true: {}
                 },
                 true: {
-                    false: {
-                        false: {}, true: {}
-                    },
-                    true: {
-                        false: {}, true: {}
-                    }
+                    false: {}, true: {}
                 }
             },
-            $checkboxes = $('#vennOptions input[type="checkbox"]'),
-            $instruction = $('#sectionVenn .instruction');
+            true: {
+                false: {
+                    false: {}, true: {}
+                },
+                true: {
+                    false: {}, true: {}
+                }
+            }
+        },
+        $checkboxes = $('#vennOptions input[type="checkbox"]'),
+        $instruction = $('#sectionVenn .instruction');
 
     //         Red    Blue   Star   LED
     conditions[false][false][false][false] = 'C';
-    conditions[false][false][false][true ] = 'D';
-    conditions[false][false][true ][false] = 'C';
-    conditions[false][false][true ][true ] = 'B';
-    conditions[false][true ][false][false] = 'S';
-    conditions[false][true ][false][true ] = 'P';
-    conditions[false][true ][true ][false] = 'D';
-    conditions[false][true ][true ][true ] = 'P';
-    conditions[true ][false][false][false] = 'S';
-    conditions[true ][false][false][true ] = 'B';
-    conditions[true ][false][true ][false] = 'C';
-    conditions[true ][false][true ][true ] = 'B';
-    conditions[true ][true ][false][false] = 'S';
-    conditions[true ][true ][false][true ] = 'S';
-    conditions[true ][true ][true ][false] = 'P';
-    conditions[true ][true ][true ][true ] = 'D';
+    conditions[false][false][false][true] = 'D';
+    conditions[false][false][true][false] = 'C';
+    conditions[false][false][true][true] = 'B';
+    conditions[false][true][false][false] = 'S';
+    conditions[false][true][false][true] = 'P';
+    conditions[false][true][true][false] = 'D';
+    conditions[false][true][true][true] = 'P';
+    conditions[true][false][false][false] = 'S';
+    conditions[true][false][false][true] = 'B';
+    conditions[true][false][true][false] = 'C';
+    conditions[true][false][true][true] = 'B';
+    conditions[true][true][false][false] = 'S';
+    conditions[true][true][false][true] = 'S';
+    conditions[true][true][true][false] = 'P';
+    conditions[true][true][true][true] = 'D';
 
     $checkboxes.on('change', function () {
         var checked = [];
@@ -673,29 +673,29 @@ $('section').each(function () {
 
         addRow($doCut, [
             {},
-            {star: true},
-            {red: true, star: true}
+            { star: true },
+            { red: true, star: true }
         ]);
         addRow($doNotCut, [
-            {light: true},
-            {blue: true, light: true},
-            {red: true, blue: true, star: true, light: true}
+            { light: true },
+            { blue: true, light: true },
+            { red: true, blue: true, star: true, light: true }
         ]);
         addRow($serialList, [
-            {red: true},
-            {blue: true},
-            {red: true, blue: true},
-            {red: true, blue: true, light: true}
+            { red: true },
+            { blue: true },
+            { red: true, blue: true },
+            { red: true, blue: true, light: true }
         ]);
         addRow($parallelList, [
-            {blue: true, light: true},
-            {red: true, blue: true, star: true},
-            {blue: true, star: true, light: true}
+            { blue: true, light: true },
+            { red: true, blue: true, star: true },
+            { blue: true, star: true, light: true }
         ]);
         addRow($batteryList, [
-            {red: true, light: true},
-            {star: true, light: true},
-            {red: true, star: true, light: true}
+            { red: true, light: true },
+            { star: true, light: true },
+            { red: true, star: true, light: true }
         ]);
     }).triggerHandler('change');
 
@@ -716,18 +716,18 @@ $('section').each(function () {
      * Passwords
      * */
     var passwords = [
-                'about', 'after', 'again', 'below', 'could',
-                'every', 'first', 'found', 'great', 'house',
-                'large', 'learn', 'never', 'other', 'place',
-                'plant', 'point', 'right', 'small', 'sound',
-                'spell', 'still', 'study', 'their', 'there',
-                'these', 'thing', 'think', 'three', 'water',
-                'where', 'which', 'world', 'would', 'write'
-            ],
-            $passwordContainer = $('#passwords'),
-            $passwords = [],
-            $row,
-            $inputs = $('#passwordOptions > li > input');
+        'agent', 'barva', 'budík', 'copak', 'domov',
+        'dráha', 'hokej', 'hvozd', 'kabel', 'kočka',
+        'kolem', 'kosti', 'lustr', 'místo', 'okolo',
+        'pokoj', 'pomoc', 'pozdě', 'praha', 'práce',
+        'právo', 'písek', 'rehek', 'skála', 'strom',
+        'strop', 'škola', 'šperk', 'tráva', 'vazba',
+        'volat', 'volba', 'zájem', 'zásah', 'škála'
+    ],
+        $passwordContainer = $('#passwords'),
+        $passwords = [],
+        $row,
+        $inputs = $('#passwordOptions > li > input');
 
     passwords.forEach(function (password, i) {
         var $cell;
@@ -741,7 +741,7 @@ $('section').each(function () {
 
     $inputs.on('keyup', function () {
         var pattern = '^',
-                regex;
+            regex;
         this.value = this.value.replace(/[^a-z]/gi, '').toLowerCase();
         $inputs.each(function (i, input) {
             pattern += input.value ? '[' + input.value + ']' : '.';
@@ -751,6 +751,150 @@ $('section').each(function () {
 
         $passwords.forEach(function ($password) {
             $password.toggleClass('inactive', !$password.text().match(regex));
+        });
+    });
+})();
+
+
+(function () {
+    /**
+     * Maze
+     */
+    var columns = [
+        ['16', '15', '14', '13', '12', '11'],
+        ['26', '25', '24', '23', '22', '21'],
+        ['36', '35', '34', '33', '32', '31'],
+        ['46', '45', '44', '43', '42', '41'],
+        ['56', '55', '54', '53', '52', '51'],
+        ['66', '65', '64', '63', '62', '61']
+    ],
+        $section = $('#sectionMaze'),
+        $imageLists = {}; // name -> $('<img />')[]
+
+    var $bglines = $('<div id="mazebg" class="mazebg"></div>');
+    $section.append($bglines);
+    $.each(columns, function (i, column) {
+        var $column = $('<ul data-count="0"></ul>');
+        $bglines.append($column);
+
+        $.each(column, function (i, name) {
+            var $img = $('<img data-name="' + name + '" src="maze/dot.png" width="30" height="30" />');
+            $column.append($('<li></li>').append($img));
+
+            name in $imageLists
+                ? $imageLists[name].push($img)
+                : $imageLists[name] = [$img];
+        });
+    });
+
+    var $checkbox = $('#mazeMark')
+    var marker
+    var chosen = false
+
+    $('#sectionMaze input').on('change', function () {
+        marker = +$checkbox.prop('checked');
+    }).first().trigger('change');
+
+    $section.on('click', 'img', function () {
+        var $img = $(this),
+            name = $img.data('name'),
+            endState = !$img.hasClass('selected');
+
+        if (!marker) {
+            $img.toggleClass('selected', endState);
+            var pairs = [[15, 64], [23, 55], [43, 63], [13, 16], [41, 54], [32, 56], [21, 26], [33, 46], [12, 35]]
+            var secondary
+            for (let i = 0; i < pairs.length; i++) {
+                if (pairs[i].includes(name)) {
+                    pairs[i][0] == (name) ? secondary = pairs[i][1] : secondary = pairs[i][0]
+                    $.each($imageLists[secondary], function (i, $img) {
+                        $img.toggleClass('hinted', endState)
+                    });
+                    document.getElementById('mazebg').style.backgroundImage = "url(maze/maze" + i + ".svg)";
+                }
+            }
+            if (!endState && name == chosen) { // newly desel
+                chosen = false
+                document.getElementById('mazebg').style.backgroundSize = "0px";
+            }
+            if (endState && chosen == false && secondary) { // newly sel
+                chosen = name
+                document.getElementById('mazebg').style.backgroundSize = "180px";
+            }
+        } else {
+            $img.toggleClass('marked');
+        }
+
+
+    });
+
+    $section.find('.jsResetSection').on('click', function () {
+        // Also need to reset the indices after removing .selected
+        $section.find('ul').attr('data-count', 0);
+        $.each($imageLists, function (i, $img) {
+            $.each($img, function (i, $img) {
+                if ($img.hasClass('hinted')) $img.toggleClass('hinted')
+                if ($img.hasClass('marked')) $img.toggleClass('marked')
+            });
+        });
+        document.getElementById('mazebg').style.backgroundImage = "";
+        marker = 0;
+        chosen = false
+    });
+})();
+
+
+(function () {
+    /**
+     * Knobs
+     */
+
+    var U = 'horní',
+        D = 'spodní',
+        L = 'levá',
+        R = 'pravá',
+        disp = {
+            '  X XXXXXX X': U,
+            'X X X  XX XX': U,
+            ' XX  XXXXX X': D,
+            'X X X  X   X': D,
+            '    X X  XXX': L,
+            '    X    XX ': L,
+            'X XXXXXXX X ': R,
+            'X XX  XXX X ': R,
+        },
+        $list = $('#knobList'),
+        $disp = {},
+        $rows = {};
+
+    $.each(disp, function (word, location) {
+        var $dt = $('<dt>' + word + '</dt>');
+        $list.append($dt)
+            .append($('<dd>' + location + '</dd>'));
+        $disp[word] = $dt;
+    });
+
+    $('#knobInput').on('keyup', function () {
+        var value = this.value.toUpperCase();
+        this.value = value;
+
+        $.each($disp, function (word, $dt) {
+            $dt.removeClass('inactive');
+        });
+        $.each($rows, function (word, $row) {
+            $row.removeClass('inactive');
+        });
+
+        if (!value) {
+            return;
+        }
+
+        $.each($disp, function (word, $dt) {
+            word.indexOf(value) !== 0 && $dt.addClass('inactive');
+        });
+
+        $.each($rows, function (word, $row) {
+            word.indexOf(value) !== 0 && $row.addClass('inactive');
         });
     });
 })();

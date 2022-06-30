@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Keep Talking and Nobody Explodes</title>
+        <title>Keep Talking and Nobody Explodes manual</title>
         <link rel="stylesheet" type="text/css" href="ktane.css" />
     </head>
 
@@ -11,10 +11,11 @@
             <ul id="navList"></ul>
         </nav>
 
-        <h1>Keep Talking and Nobody Explodes</h1>
+        <h1>Keep Talking and Nobody Explodes - True Master Manual</h1>
+        Ověřovací kód: 058 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; v.2-cs
 
         <section id="sectionWires">
-            <h2>Wires</h2>
+            <h2>Dráty</h2>
 
             <ul id="wireOptions">
                 <li><button class="button red" data-colour="red"></button></li>
@@ -23,60 +24,59 @@
                 <li><button class="button white" data-colour="white"></button></li>
                 <li><button class="button black" data-colour="black"></button></li>
             </ul>
-
             <ul id="wireList"></ul>
         </section>
 
         <section id="sectionButton">
-            <h2>Button</h2>
+            <h2>Tlačítko</h2>
             <div>
-                Colour:
-                <input type="radio" name="buttonColour" value="blue" id="buttonColourBlue" checked /> <label for="buttonColourBlue" class="button blue">Blue</label>
-                <input type="radio" name="buttonColour" value="white" id="buttonColourWhite" /> <label for="buttonColourWhite" class="button white">White</label>
-                <input type="radio" name="buttonColour" value="yellow" id="buttonColourYellow" /> <label for="buttonColourYellow" class="button yellow">Yellow</label>
-                <input type="radio" name="buttonColour" value="red" id="buttonColourRed" /> <label for="buttonColourRed" class="button red">Red</label>
+                Barva:
+                <input type="radio" name="buttonColour" value="blue" id="buttonColourBlue" checked /> <label for="buttonColourBlue" class="button blue">Modrá</label>
+                <input type="radio" name="buttonColour" value="white" id="buttonColourWhite" /> <label for="buttonColourWhite" class="button white">Bílá</label>
+                <input type="radio" name="buttonColour" value="yellow" id="buttonColourYellow" /> <label for="buttonColourYellow" class="button yellow">Žlutá</label>
+                <input type="radio" name="buttonColour" value="red" id="buttonColourRed" /> <label for="buttonColourRed" class="button red">Červená</label>
             </div>
             <div>
                 Text:
-                <input type="radio" name="buttonText" value="Abort" id="buttonTextAbort" checked /> <label for="buttonTextAbort">Abort</label>
-                <input type="radio" name="buttonText" value="Detonate" id="buttonTextDetonate" /> <label for="buttonTextDetonate">Detonate</label>
-                <input type="radio" name="buttonText" value="Hold" id="buttonTextHold" /> <label for="buttonTextHold">Hold</label>
-                <input type="radio" name="buttonText" value="Press" id="buttonTextPress" /> <label for="buttonTextPress">Press</label>
+                <input type="radio" name="buttonText" value="Abort" id="buttonTextAbort" checked /> <label for="buttonTextAbort">Pustit</label>
+                <input type="radio" name="buttonText" value="Detonate" id="buttonTextDetonate" /> <label for="buttonTextDetonate">Odpálit</label>
+                <input type="radio" name="buttonText" value="Hold" id="buttonTextHold" /> <label for="buttonTextHold">Držet</label>
+                <input type="radio" name="buttonText" value="Press" id="buttonTextPress" /> <label for="buttonTextPress">Zmáčknout</label>
             </div>
             <div class="instruction"></div>
             <div>
-                If holding button, release when the timer contains the digit that corresponds to the strip colour:
+                Pokud drží tlačítko, pusť když časovač ukazuje číslo korespondující s barvou pruhu:
                 <ul>
-                    <li><span class="button blue">Blue</span>: &nbsp; 4</li>
-                    <li><span class="button yellow">Yellow</span>: 5</li>
-                    <li><span class="button">Other</span>: &nbsp;1</li>
+                    <li><span class="button blue">Modrý</span>: &nbsp;4</li>
+                    <li><span class="button yellow">Žlutý</span>: &nbsp;5</li>
+                    <li><span class="button">Jiný</span>: &nbsp; 1</li>
                 </ul>
             </div>
         </section>
 
         <section id="sectionKeypads">
-            <h2>Keypads</h2>
+            <h2>Čokolády (Klávesnice)</h2>
             <button class="jsResetSection">Reset</button>
         </section>
 
         <section id="sectionSimon">
-            <h2>Simon Says</h2>
+            <h2>Kuba řekl (Simon says)</h2>
 
             <div id="simonInputs">
-                <input type="checkbox" id="simonVowel" /> <label for="simonVowel">Vowel</label>
+                <input type="checkbox" id="simonVowel" /> <label for="simonVowel">Samohláska</label>
 
                 <ul>
                     <li>
                         <input type="radio" name="simonStrikes" value="0" id="simonStrikes0" checked />
-                        <label for="simonStrikes0">0 strikes</label>
+                        <label for="simonStrikes0">0 chyb</label>
                     </li>
                     <li>
                         <input type="radio" name="simonStrikes" value="1" id="simonStrikes1" />
-                        <label for="simonStrikes1">1 strike</label>
+                        <label for="simonStrikes1">1 chyba</label>
                     </li>
                     <li>
                         <input type="radio" name="simonStrikes" value="2" id="simonStrikes2" />
-                        <label for="simonStrikes2">2 strikes</label>
+                        <label for="simonStrikes2">2 chyby</label>
                     </li>
                 </ul>
             </div>
@@ -104,7 +104,7 @@
         </section>
 
         <section id="sectionWof">
-            <h2>Who's on First</h2>
+            <h2>Slova (Kdo je první)</h2>
 
             <div><input type="text" id="wofInput" /></div>
             <dl id="wofList"></dl>
@@ -112,14 +112,14 @@
         </section>
 
         <section id="sectionMemory">
-            <h2>Memory</h2>
+            <h2>Paměť</h2>
             <button class="jsResetSection">Reset</button>
             <table>
                 <tr>
-                    <th>Stage</th>
-                    <th>Display</th>
-                    <th>Pos.</th>
-                    <th>Label</th>
+                    <th>Fáze</th>
+                    <th>Displej</th>
+                    <th>Pozice</th>
+                    <th>Štítek</th>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -148,19 +148,19 @@
                 <tr>
                     <td>5</td>
                     <td><input type="text" maxlength="1" id="stage_5_display" data-index="5"></td>
-                    <td><input type="text" maxlength="1" id="stage_5_pos" /></td>
+                    <td></td>
                     <td><input type="text" maxlength="1" id="stage_5_label" /></td>
                 </tr>
             </table>
         </section>
 
         <section id="sectionMorse">
-            <h2>Morse</h2>
+            <h2>Morseovka</h2>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Word</th>
+                        <th>Slovo</th>
                         <th>Freq</th>
                     </tr>
                 </thead>
@@ -171,7 +171,7 @@
         </section>
 
         <section id="sectionSequence">
-            <h2>Wire Sequence</h2>
+            <h2> Posloupnost drátů</h2>
             <ul id="sequenceOptions">
                 <li><button class="button red" data-colour="red" data-letter="A">A</button></li>
                 <li><button class="button blue" data-colour="blue" data-letter="A">A</button></li>
@@ -187,33 +187,33 @@
         </section>
 
         <section id="sectionVenn">
-            <h2>Venn Diagram</h2>
+            <h2>Komplikované dráty</h2>
             <ul id="vennOptions">
-                <li><input type="checkbox" id="vennRed" /> <label for="vennRed">Red</label></li>
-                <li><input type="checkbox" id="vennBlue" /> <label for="vennBlue">Blue</label></li>
-                <li><input type="checkbox" id="vennStar" /> <label for="vennStar">Star</label></li>
-                <li><input type="checkbox" id="vennLed" /> <label for="vennLed">LED</label></li>
+                <li><input type="checkbox" id="vennRed" /> <label for="vennRed">Červená</label></li>
+                <li><input type="checkbox" id="vennBlue" /> <label for="vennBlue">Modrá</label></li>
+                <li><input type="checkbox" id="vennStar" /> <label for="vennStar">Hvězdička</label></li>
+                <li><input type="checkbox" id="vennLed" /> <label for="vennLed">Svítí (LED)</label></li>
             </ul>
             <div class="instruction"></div>
         </section>
 
         <section id="sectionVenn2">
-            <h2>Alternate Venn Diagram</h2>
+            <h2>Komplikované dráty (alt)</h2>
             <ul id="venn2Options">
-                <li><input type="checkbox" id="venn2SerialEven" /> <label for="venn2SerialEven">Serial number is even</label></li>
-                <li><input type="checkbox" id="venn2ParallelExists" /> <label for="venn2ParallelExists">A parallel port exists</label></li>
-                <li><input type="checkbox" id="venn2MultipleBatteries" /> <label for="venn2MultipleBatteries">More than one battery exists</label></li>
+                <li><input type="checkbox" id="venn2SerialEven" /> <label for="venn2SerialEven">seriové číslo sudé</label></li>
+                <li><input type="checkbox" id="venn2ParallelExists" /> <label for="venn2ParallelExists">Bomba má <a title="Klikni a uvidíš příklad" href="./other/parallel-port.svg">paralelní port</a></label></li>
+                <li><input type="checkbox" id="venn2MultipleBatteries" /> <label for="venn2MultipleBatteries">Bomba má více než jednu baterii</label></li>
             </ul>
 
-            <h3>Wires to cut:</h3>
+            <h3>Dráty k přestřihnutí:</h3>
             <table id="venn2DoCut"></table>
 
-            <h3>Wires to <span class="red">not</span> cut:</h3>
+            <h3>ty co <span class="red">nesmíte</span> přestřihnout:</h3>
             <table id="venn2DoNotCut"></table>
         </section>
 
         <section id="sectionPasswords">
-            <h2>Passwords</h2>
+            <h2>Hesla</h2>
             <button class="jsResetSection">Reset</button>
             <ul id="passwordOptions">
                 <li><input type="text" /></li>
@@ -225,6 +225,19 @@
             <table id="passwords"></table>
         </section>
 
+        <section id="sectionMaze">
+            <h2>Bludiště</h2>
+            <p>pomocí dvou kroužků identifikujete mapu, pak se snažíte dostat bílý čtvereček do červeného trojúhelníku</p>
+            <button class="jsResetSection">Reset</button>
+            <input type="checkbox" id="mazeMark" /> <label for="mazeMark">Mark mode</label>
+        </section>
+
+        <section id="sectionKnob">
+            <h2>(HM) Knoflíky</h2>
+
+            <div><input type="text" id="knobInput" /></div>
+            <dl id="knobList"></dl>
+        </section>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="ktane.js"></script>
